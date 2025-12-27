@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metacognition Engine Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .chart-container { position: relative; width: 100%; max-width: 600px; margin: auto; height: 300px; max-height: 400px; }
+        body { background-color: #0f172a; color: #f8fafc; font-family: sans-serif; }
+    </style>
+</head>
+<body class="p-4 md:p-12">
+    <div class="max-w-6xl mx-auto space-y-16">
+        <header class="text-center space-y-4">
+            <h1 class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">The Architecture of Metacognition</h1>
+            <p class="text-slate-400 max-w-2xl mx-auto italic">Visualizing the "Chain of Debate" workflow demonstrated by Satya Nadella.</p>
+        </header>
+
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="bg-slate-900 p-8 rounded-3xl border border-slate-800 shadow-2xl">
+                <h2 class="text-2xl font-bold mb-6 text-blue-400 uppercase tracking-widest">Protocol Capabilities</h2>
+                <div class="chart-container"><canvas id="capabilitiesRadar"></canvas></div>
+            </div>
+            <div class="space-y-6">
+                <h3 class="text-3xl font-bold">Why Frameworks Matter</h3>
+                <p class="text-slate-400 leading-relaxed">The Metacognition Engine isn't just one model. It's a series of role-based instructions that force models to compete. This visualization shows how the <strong>AI Council</strong> excels in creativity, while the <strong>DxO Protocol</strong> is optimized for absolute research accuracy.</p>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-blue-500/10 p-4 rounded-xl border border-blue-500/30 text-center"><div class="text-3xl font-bold text-blue-400">95%</div><div class="text-xs text-slate-500 uppercase mt-1">Accuracy (DxO)</div></div>
+                    <div class="bg-purple-500/10 p-4 rounded-xl border border-purple-500/30 text-center"><div class="text-3xl font-bold text-purple-400">90%</div><div class="text-xs text-slate-500 uppercase mt-1">Creativity (Council)</div></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-slate-900 p-12 rounded-3xl border border-slate-800">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Case Study: Cricket All-Time XI Consensus</h2>
+                <p class="text-slate-400">Agreement levels between models during the Bengaluru demo.</p>
+            </div>
+            <div class="chart-container"><canvas id="consensusBar"></canvas></div>
+        </section>
+    </div>
+
+    <script>
+        const radarCtx = document.getElementById('capabilitiesRadar').getContext('2d');
+        new Chart(radarCtx, {
+            type: 'radar',
+            data: {
+                labels: ['Accuracy', 'Creativity', 'Speed', 'Bias Control', 'Complexity'],
+                datasets: [
+                    { label: 'AI Council', data: [80, 95, 70, 85, 60], borderColor: '#3b82f6', backgroundColor: 'rgba(59, 130, 246, 0.2)' },
+                    { label: 'DxO Protocol', data: [98, 55, 40, 95, 90], borderColor: '#a855f7', backgroundColor: 'rgba(168, 85, 247, 0.2)' }
+                ]
+            },
+            options: { 
+                maintainAspectRatio: false, 
+                plugins: { legend: { labels: { color: '#fff' } } },
+                scales: { r: { grid: { color: '#334155' }, angleLines: { color: '#334155' }, ticks: { display: false } } }
+            }
+        });
+
+        const barCtx = document.getElementById('consensusBar').getContext('2d');
+        new Chart(barCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Tendulkar', 'Dravid', 'Kohli', 'Kapil Dev', 'Kumble', 'Zaheer Khan'],
+                datasets: [{ 
+                    label: 'Model Consensus %', 
+                    data: [100, 100, 95, 100, 85, 60], 
+                    backgroundColor: ['#3b82f6', '#3b82f6', '#3b82f6', '#3b82f6', '#a855f7', '#ef4444'] 
+                }]
+            },
+            options: { 
+                maintainAspectRatio: false,
+                scales: { y: { beginAtZero: true, max: 100, grid: { color: '#334155' } } },
+                plugins: { legend: { display: false } }
+            }
+        });
+    </script>
+</body>
+</html>
